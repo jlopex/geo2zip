@@ -44,6 +44,7 @@ geo-zip <latitude> <longitude>
 ```
 
 Example:
+
 ```sh
 geo-zip 37.7749 -122.4194
 ```
@@ -66,10 +67,11 @@ closest_zip = geo_zip.find_closest_zip(latitude, longitude)
 print(f"The closest ZIP code to ({latitude}, {longitude}) is {closest_zip}")
 ```
 
-### Data
-The dataset used for ZIP codes and their coordinates is extracted from the 2023 US Gazetteer Files (https://www2.census.gov/geo/docs/maps-data/data/gazetteer/2023_Gazetteer/2023_Gaz_zcta_national.zip). The CSV file is included in the package at geo_zip/data/geo_zip.csv.
+### Data
 
-### Testing
+The dataset used for ZIP codes and their coordinates is extracted from the [2023 US Gazetteer Files](https://www2.census.gov/geo/docs/maps-data/data/gazetteer/2023_Gazetteer/2023_Gaz_zcta_national.zip). The CSV file is included in the package at geo_zip/data/geo_zip.csv.
+
+### Testing
 
 Simple and stupid Tests are written using pytest. To run the tests, execute the following command:
 
