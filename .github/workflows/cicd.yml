@@ -49,12 +49,12 @@ jobs:
           git push --follow-tags
 
       - name: Build package
-        if: success()
+        if: github.ref == 'refs/heads/main' && success()
         run: |
           python setup.py sdist bdist_wheel
 
       - name: Publish package to PyPI
-        if: success()
+        if: github.ref == 'refs/heads/main' && success()
         env:
           TWINE_USERNAME: __token__
           TWINE_PASSWORD: ${{ secrets.PYPI_API_TOKEN }}
