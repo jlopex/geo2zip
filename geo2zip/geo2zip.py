@@ -3,10 +3,10 @@ import os
 
 from scipy.spatial import KDTree
 
-class GeoZip:
+class Geo2Zip:
     def __init__(self, file_path=None):
         if file_path is None:
-            file_path = os.path.join(os.path.dirname(__file__), 'data/geo_zip.csv')
+            file_path = os.path.join(os.path.dirname(__file__), 'data/geo2zip.csv')
         self.data = self._read_csv(file_path)
         self.tree, self.geoids = self._build_kdtree(self.data)
     

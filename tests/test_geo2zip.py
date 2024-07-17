@@ -1,6 +1,6 @@
 import os
 import pytest
-from geo_zip import GeoZip
+from geo2zip import Geo2Zip
 
 # Defined the coordinates for some well-known American cities and their expected ZIP codes
 # This can be extended if needed
@@ -18,12 +18,12 @@ cities = [
 ]
 
 @pytest.fixture(scope="module")
-def geo_zip():
-    file_path = os.path.join(os.path.dirname(__file__), '../geo_zip/data/geo_zip.csv')
-    return GeoZip(file_path)
+def geo2zip():
+    file_path = os.path.join(os.path.dirname(__file__), '../geo2zip/data/geo2zip.csv')
+    return Geo2Zip(file_path)
 
 @pytest.mark.parametrize("city, lat, lon, expected_zip", cities)
-def test_find_closest_zip(geo_zip, city, lat, lon, expected_zip):
-    closest_zip = geo_zip.find_closest_zip(lat, lon)
+def test_find_closest_zip(geo2zip, city, lat, lon, expected_zip):
+    closest_zip = geo2zip.find_closest_zip(lat, lon)
     assert closest_zip == expected_zip, f"Expected {expected_zip} but got {closest_zip} for {city}"
 

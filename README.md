@@ -1,6 +1,6 @@
-# Geo Zip
+# Geo2Zip
 
-Geo Zip is a Python package that provides a fast and efficient way to find the closest US ZIP code for a given latitude and longitude. It uses a KDTree for quick nearest-neighbor lookup, making it suitable for geospatial queries.
+Geo2Zip is a Python package that provides a fast and efficient way to find the closest US ZIP code for a given latitude and longitude. It uses a KDTree for quick nearest-neighbor lookup, making it suitable for geospatial queries.
 
 ## Features
 
@@ -19,8 +19,8 @@ Geo Zip is a Python package that provides a fast and efficient way to find the c
 
 1. Clone the repository:
     ```sh
-    git clone https://github.com/jlopex/geo-zip.git
-    cd geo-zip
+    git clone https://github.com/jlopex/geo2zip.git
+    cd geo2zip
     ```
 
 2. Install the package and its dependencies:
@@ -37,39 +37,39 @@ Geo Zip is a Python package that provides a fast and efficient way to find the c
 
 ### Command Line Interface
 
-You can use the `geo-zip` command to find the closest ZIP code for a given latitude and longitude.
+You can use the `geo2zip` command to find the closest ZIP code for a given latitude and longitude.
 
 ```sh
-geo-zip <latitude> <longitude>
+geo2zip <latitude> <longitude>
 ```
 
 Example:
 
 ```sh
-geo-zip 37.7749 -122.4194
+geo2zip 37.7749 -122.4194
 ```
 
 This command will output the closest ZIP code to the provided coordinates.
 
 ### As a Python Library
-You can also use the GeoZip class directly in your Python code:
+You can also use the Geo2Zip class directly in your Python code:
 
 ```python
-from geo_zip import GeoZip
+from geo2zip import Geo2Zip
 
 # Initialize with the path to your data file
-geo_zip = GeoZip('path/to/geo_zip/data/geo_zip.csv')
+geo2zip = Geo2Zip('path/to/geo_zip/data/geo_zip.csv')
 
 # Find the closest ZIP code
 latitude = 37.7749
 longitude = -122.4194
-closest_zip = geo_zip.find_closest_zip(latitude, longitude)
+closest_zip = geo2zip.find_closest_zip(latitude, longitude)
 print(f"The closest ZIP code to ({latitude}, {longitude}) is {closest_zip}")
 ```
 
 ### Data
 
-The dataset used for ZIP codes and their coordinates is extracted from the [2023 US Gazetteer Files](https://www2.census.gov/geo/docs/maps-data/data/gazetteer/2023_Gazetteer/2023_Gaz_zcta_national.zip). The CSV file is included in the package at geo_zip/data/geo_zip.csv.
+The dataset used for ZIP codes and their coordinates is extracted from the [2023 US Gazetteer Files](https://www2.census.gov/geo/docs/maps-data/data/gazetteer/2023_Gazetteer/2023_Gaz_zcta_national.zip). The CSV file is included in the package at geo2zip/data/geo2zip.csv.
 
 ### Testing
 
