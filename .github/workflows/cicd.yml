@@ -37,7 +37,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          bump2version patch  # or minor/major depending on your needs
+          bump2version patch  # 'patch' 'minor','major'
           git push --follow-tags
 
       - name: Build package
