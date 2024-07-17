@@ -2,7 +2,7 @@
 
 Geo2Zip is a Python package that provides a fast and efficient way to find the closest US ZIP code for a given latitude and longitude. It uses a KDTree for quick nearest-neighbor lookup, making it suitable for geospatial queries.
 
-**Current version**: 0.1.0
+**Current version**: 0.1.1
 
 ## Features
 
