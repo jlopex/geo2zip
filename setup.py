@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='geo2zip',
-    version='0.1.1',
+    version='0.1.2',
     author='Javier Lopez',
     author_email='jlopex@gmail.com',
     description='Geo2Zip is a Python package that provides a fast and efficient way to find the closest US ZIP code for a given latitude and longitude. It uses a KDTree for quick nearest-neighbor lookup, making it suitable for geospatial queries.',
