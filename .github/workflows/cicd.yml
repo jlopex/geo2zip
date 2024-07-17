@@ -26,10 +26,19 @@ jobs:
           python -m pip install --upgrade pip
           pip install setuptools wheel twine
           pip install -e .[dev]
+          pip install bump2version
 
       - name: Run tests
         run: |
           pytest tests/
+
+      - name: Bump version and push tags
+        if: github.ref == 'refs/heads/main' && success()
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          bump2version patch  # or minor/major depending on your needs
+          git push --follow-tags
 
       - name: Build package
         if: success()
@@ -43,3 +52,4 @@ jobs:
           TWINE_PASSWORD: ${{ secrets.PYPI_API_TOKEN }}
         run: |
           twine upload dist/*
+
