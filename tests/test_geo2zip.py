@@ -28,14 +28,22 @@ cities = [
     ('Victoria, BC', 48.4284, -123.3656, 'V8W1N8', 'CA'),
 ]
 
+
 @pytest.fixture(scope='module')
 def geo2zip():
     file_path = os.path.join(os.path.dirname(__file__), '../geo2zip/data/')
     return Geo2Zip(file_path)
 
+
 @pytest.mark.parametrize('city, lat, lon, expected_zip, expected_country', cities)
 def test_find_closest_zip(geo2zip, city, lat, lon, expected_zip, expected_country):
-    closest_zip, country = geo2zip.find_closest_zip(lat, lon)
+    closest_zip = geo2zip.find_closest_zip(lat, lon)
+    assert closest_zip == expected_zip, f"Expected {expected_zip} but got {closest_zip} for {city}"
+
+
+@pytest.mark.parametrize('city, lat, lon, expected_zip, expected_country', cities)
+def test_find_closest_zip_and_country(geo2zip, city, lat, lon, expected_zip, expected_country):
+    closest_zip, country = geo2zip.find_closest_zip_and_country(lat, lon)
     assert closest_zip == expected_zip, f"Expected {expected_zip} but got {closest_zip} for {city}"
     assert country == expected_country, f"Expected {expected_country} but got {country} for {city}"
 
