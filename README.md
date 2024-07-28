@@ -6,7 +6,7 @@ Geo2Zip is a Python package that provides a fast and efficient way to find the c
 
 The package includes Canada and US ZIP/postal codes and their geolocation as out-of-the-boxdatasets.
 
-**Current version**: 0.1.2
+**Current version**: 0.1.3
 
 ## Features
 
