@@ -83,7 +83,18 @@ class Geo2Zip:
         tree = KDTree(coordinates)
         return tree, geoids, countries
 
-    def find_closest_zip(self, lat: float, lon: float) -> Tuple[str, str]:
+    def find_closest_zip(self, lat: float, lon: float) -> str:
+        """
+        Finds the closest zip / postal code for the given latitude and longitude using the KDTree.
+
+        :param lat: Latitude of the query point.
+        :param lon: Longitude of the query point.
+        :return: A string containing the Zip/Postal code 
+        """
+        distance, index = self.tree.query((lat, lon))
+        return self.geoids[index]
+
+    def find_closest_zip_and_country(self, lat: float, lon: float) -> Tuple[str, str]:
         """
         Finds the closest zip code and country name for the given latitude and longitude using the KDTree.
 
