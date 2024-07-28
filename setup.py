@@ -29,8 +29,7 @@ setup(
         ],
     },
     package_data={
-        'us-geo2zip': ['data/us.csv'],
-        'ca-geo2zip': ['data/ca.csv'],
+        'geo2zip': ['data/us.csv', 'data/ca.csv'],
     },
     include_package_data=True,
 )
