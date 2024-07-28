@@ -2,7 +2,9 @@
 
 ![Build and Test](https://github.com/jlopex/geo2zip/actions/workflows/cicd.yml/badge.svg)
 
-Geo2Zip is a Python package that provides a fast and efficient way to find the closest US ZIP code for a given latitude and longitude. It uses a KDTree for quick nearest-neighbor lookup, making it suitable for geospatial queries.
+Geo2Zip is a Python package that provides a fast and efficient way to find the closest ZIP/Postal code for a given latitude and longitude. It uses a KDTree for quick nearest-neighbor lookup, making it suitable for geospatial queries.
+
+The package includes Canada and US ZIP/postal codes and their geolocation as out-of-the-boxdatasets.
 
 **Current version**: 0.1.2
 
@@ -56,13 +58,14 @@ geo2zip 37.7749 -122.4194
 This command will output the closest ZIP code to the provided coordinates.
 
 ### As a Python Library
-You can also use the Geo2Zip class directly in your Python code:
+You can also use the Geo2Zip class directly with your own dataset in
+your Python code doing:
 
 ```python
 from geo2zip import Geo2Zip
 
 # Initialize with the path to your data file
-geo2zip = Geo2Zip('path/to/geo_zip/data/geo_zip.csv')
+geo2zip = Geo2Zip('path/to/geo_zip/data/your.csv')
 
 # Find the closest ZIP code
 latitude = 37.7749
@@ -73,7 +76,9 @@ print(f"The closest ZIP code to ({latitude}, {longitude}) is {closest_zip}")
 
 ### Data
 
-The dataset used for ZIP codes and their coordinates is extracted from the [2023 US Gazetteer Files](https://www2.census.gov/geo/docs/maps-data/data/gazetteer/2023_Gazetteer/2023_Gaz_zcta_national.zip). The CSV file is included in the package at geo2zip/data/geo2zip.csv.
+The dataset used for US ZIP codes and their coordinates is extracted from the [2023 US Gazetteer Files](https://www2.census.gov/geo/docs/maps-data/data/gazetteer/2023_Gazetteer/2023_Gaz_zcta_national.zip). The CSV file is included in the package at geo2zip/data/us.csv.
+
+The dataset used for Canada postal codes and their coordinates is taken from [here](https://github.com/ccnixon/postalcodes/blob/master/CanadianPostalCodes.csv). The CSV file is included in the package at geo2zip/data/ca.csv.
 
 ### Testing
 
