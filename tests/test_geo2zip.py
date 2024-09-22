@@ -41,6 +41,18 @@ def test_find_closest_zip(geo2zip, city, lat, lon, expected_zip, expected_countr
     assert closest_zip == expected_zip, f"Expected {expected_zip} but got {closest_zip} for {city}"
 
 
+def test_find_closest_zip_with_distance_threshold(geo2zip):
+    # Using Barcelona (Spain) coordinates with a limit of 100 kms to the closest postal code
+    with pytest.raises(ValueError, match="distance: .* threshold: 100"):
+        geo2zip.find_closest_zip(41.3851, 2.1734, distance_threshold=100)
+
+
+@pytest.mark.parametrize('city, lat, lon, expected_zip, expected_country', cities)
+def test_find_closest_zip_with_aggressive_distance_threshold(geo2zip, city, lat, lon, expected_zip, expected_country):
+    with pytest.raises(ValueError, match="distance: .* threshold: 0.001"):
+        closest_zip = geo2zip.find_closest_zip(lat, lon, distance_threshold=0.001)
+
+
 @pytest.mark.parametrize('city, lat, lon, expected_zip, expected_country', cities)
 def test_find_closest_zip_and_country(geo2zip, city, lat, lon, expected_zip, expected_country):
     closest_zip, country = geo2zip.find_closest_zip_and_country(lat, lon)

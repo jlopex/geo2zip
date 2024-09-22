@@ -18,6 +18,7 @@ setup(
     ],
     license='MIT',
     install_requires=[
+        'haversine',
         'scipy',
     ],
     extras_require={
