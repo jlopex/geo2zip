@@ -1,8 +1,10 @@
 import csv
+import math
 import os
 
 from typing import List, Dict, Optional, Tuple
 
+from haversine import haversine
 from scipy.spatial import KDTree
 
 
@@ -83,25 +85,43 @@ class Geo2Zip:
         tree = KDTree(coordinates)
         return tree, geoids, countries
 
-    def find_closest_zip(self, lat: float, lon: float) -> str:
+    def _find_closest_zip_index(self, lat: float, lon: float, distance_threshold: Optional[float] = None) -> int:
+        """
+        Finds the closest zip / postal code index on the kdtree for the given latitude and longitude using the KDTree.
+
+        :param lat: Latitude of the query point.
+        :param lon: Longitude of the query point.
+        :param distance_threshold: Optional; Maximum allowed distance to the closest zip code in kilometers. If exceeded, return None.
+        :return: A string containing the Zip/Postal code 
+        """
+        distance, index = self.tree.query((lat, lon))
+        real_distance = haversine((lat, lon), self.tree.data[index])
+
+        if distance_threshold is not None and real_distance > distance_threshold:
+            raise ValueError(f"Points are too far away (distance: {distance:.2f}, threshold: {distance_threshold}).")
+
+        return index
+
+    def find_closest_zip(self, lat: float, lon: float, distance_threshold: Optional[float] = None) -> str:
         """
         Finds the closest zip / postal code for the given latitude and longitude using the KDTree.
 
         :param lat: Latitude of the query point.
         :param lon: Longitude of the query point.
-        :return: A string containing the Zip/Postal code 
+        :param distance_threshold: Optional; Maximum allowed distance to the closest zip code in kilometers. If exceeded, return None.
+        :return: A string containing the Zip/Postal code
         """
-        distance, index = self.tree.query((lat, lon))
+        index = self._find_closest_zip_index(lat, lon, distance_threshold)
         return self.geoids[index]
 
-    def find_closest_zip_and_country(self, lat: float, lon: float) -> Tuple[str, str]:
+    def find_closest_zip_and_country(self, lat: float, lon: float, distance_threshold: Optional[float] = None) -> Tuple[str, str]:
         """
         Finds the closest zip code and country name for the given latitude and longitude using the KDTree.
 
         :param lat: Latitude of the query point.
         :param lon: Longitude of the query point.
+        :param distance_threshold: Optional; Maximum allowed distance to the closest zip code in kilometers. If exceeded, return None.
         :return: A tuple containing the Zip/Postal code and the country name of the closest point.
         """
-        distance, index = self.tree.query((lat, lon))
+        index = self._find_closest_zip_index(lat, lon, distance_threshold)
         return self.geoids[index], self.countries[index]
-
