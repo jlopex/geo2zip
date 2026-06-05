@@ -1,11 +1,10 @@
 import csv
-import math
 import os
 
 from typing import List, Dict, Optional, Tuple
 
-from haversine import haversine
-from scipy.spatial import KDTree
+from .distance import haversine_distance
+from .spatial import KDTree
 
 
 class Geo2Zip:
@@ -95,7 +94,7 @@ class Geo2Zip:
         :return: A string containing the Zip/Postal code 
         """
         distance, index = self.tree.query((lat, lon))
-        real_distance = haversine((lat, lon), self.tree.data[index])
+        real_distance = haversine_distance((lat, lon), self.tree.data[index])
 
         if distance_threshold is not None and real_distance > distance_threshold:
             raise ValueError(f"Points are too far away (distance: {distance:.2f}, threshold: {distance_threshold}).")

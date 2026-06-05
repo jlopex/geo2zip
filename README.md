@@ -2,7 +2,7 @@
 
 ![Build and Test](https://github.com/jlopex/geo2zip/actions/workflows/cicd.yml/badge.svg)
 
-Geo2Zip is a Python package that provides a fast and efficient way to find the closest ZIP/Postal code for a given latitude and longitude. It uses a KDTree for quick nearest-neighbor lookup, making it suitable for geospatial queries.
+Geo2Zip is a Python package that provides a fast and efficient way to find the closest ZIP/Postal code for a given latitude and longitude. It uses a small built-in KDTree for nearest-neighbor lookup, avoiding heavyweight spatial dependencies.
 
 The package includes Canada and US ZIP/postal codes and their geolocation as out-of-the-boxdatasets.
 
@@ -11,7 +11,7 @@ The package includes Canada and US ZIP/postal codes and their geolocation as out
 ## Features
 
 - Quickly find the closest ZIP code for a given latitude and longitude.
-- Efficient spatial indexing using KDTree.
+- Efficient spatial indexing using a built-in KDTree.
 - Easy-to-use command-line interface.
 
 ## Installation
@@ -87,4 +87,3 @@ Simple and stupid Tests are written using pytest. To run the tests, execute the 
 ```sh
 pytest tests/
 ```
-
