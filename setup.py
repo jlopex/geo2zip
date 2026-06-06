@@ -5,7 +5,7 @@ setup(
     version='0.1.6',
     author='Javier Lopez',
     author_email='jlopex@gmail.com',
-    description='Geo2Zip is a Python package that provides a fast and efficient way to find the closest US ZIP code for a given latitude and longitude. It uses a KDTree for quick nearest-neighbor lookup, making it suitable for geospatial queries.',
+    description='Geo2Zip is a Python package that provides a fast and efficient way to find the closest US ZIP code for a given latitude and longitude.',
     long_description=open('README.md').read(),
     long_description_content_type='text/markdown',
     url='https://github.com/jlopex/geo2zip',
@@ -17,10 +17,7 @@ setup(
         'Operating System :: OS Independent',
     ],
     license='MIT',
-    install_requires=[
-        'haversine',
-        'scipy',
-    ],
+    install_requires=[],
     extras_require={
         'dev': ['pytest'],
     },
@@ -34,4 +31,3 @@ setup(
     },
     include_package_data=True,
 )
-
