@@ -18,7 +18,7 @@ The package includes Canada and US ZIP/postal codes and their geolocation as out
 
 ### Prerequisites
 
-- Python 3.7 or higher
+- Python 3.11 or higher
 - pip
 
 ### Install the package
@@ -87,3 +87,8 @@ Simple and stupid Tests are written using pytest. To run the tests, execute the 
 ```sh
 pytest tests/
 ```
+
+## Release notes (0.1.8)
+
+- Require Python 3.11 or higher, dropping support for Python 3.7–3.10.
+- Upgrade pytest to 9.0.3 to fix CVE-2025-71176.
