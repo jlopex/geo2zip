@@ -9,7 +9,7 @@ setup(
     long_description=open('README.md').read(),
     long_description_content_type='text/markdown',
     url='https://github.com/jlopex/geo2zip',
-    python_requires='>=3.7',
+    python_requires='>=3.11',
     packages=find_packages(),
     classifiers=[
         'Programming Language :: Python :: 3',
@@ -19,7 +19,7 @@ setup(
     license='MIT',
     install_requires=[],
     extras_require={
-        'dev': ['pytest'],
+        'dev': ['pytest==9.0.3'],
     },
     entry_points={
         'console_scripts': [
